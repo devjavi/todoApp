@@ -5,8 +5,17 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const mongoose = require('mongoose');
 
-var app = express();
+const app = express();
+
+//Mongoose Config
+mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true });
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+	console.log("we're connected to the DB!");
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
