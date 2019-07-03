@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new Schema({
-	usermane: String,
 	fName: String,
 	lName: String,
 	isAdmin: { type: Boolean, default: false },
@@ -11,5 +11,7 @@ const userSchema = new Schema({
 		ref: 'Todo'
 	}
 });
+
+userSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', userSchema);
