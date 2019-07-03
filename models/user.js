@@ -5,6 +5,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const userSchema = new Schema({
 	fName: String,
 	lName: String,
+	email: String,
 	isAdmin: { type: Boolean, default: false },
 	todos: {
 		type: Schema.Types.ObjectId,

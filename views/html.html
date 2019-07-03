@@ -1,37 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>myTodo</title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
-  <h1>myTodo App</h1>
-  <p>Welcome to myTodo App </p>
-
-                    <% if(!currentUser) { %>
-
 <div id="userForms">
     <div id="registerForm">
         <form action="/register" method="post">
             <div class="formInput">
                 <label for="username">Username</label>
-                <input type="text" name="username" id="usernameR" placeholder="jonnybones" required>
+                <input type="text" name="username" id="usernameR" placeholder="jonnybones">
             </div>
             <div class="formInput">
                 <label for="fName">First Name</label>
-                <input type="text" name="fName" id="fName" placeholder="Jon" required>
+                <input type="text" name="fName" id="fName" placeholder="Jon">
             </div>
             <div class="formInput">
                 <label for="lName">Last Name</label>
-                <input type="text" name="lName" id="lName" placeholder="Jones" required>
+                <input type="text" name="lName" id="lName" placeholder="Jones">
             </div>
             <div class="formInput">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="jonjones@gmail.com" required>
+                <input type="text" name="email" id="email" placeholder="jonjones@gmail.com">
             </div>
             <div class="formInput">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" required>
+                <input type="password" name="password" id="password">
             </div>
             <div class="formInput">
                 <label for="iad">Are you an admin? </label>
@@ -42,7 +30,3 @@
     </div>
 </div>
 
-<%};%>
-
-</body>
-</html>
