@@ -11,7 +11,7 @@ module.exports = {
 		};
 
 		if (req.body.isAdmin == 'on') {
-			user.isAdmin = true;
+			newUser.isAdmin = true;
 		}
 		await User.register(newUser, req.body.password, (err, user) => {
 			if (err) {

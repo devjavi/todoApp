@@ -19,7 +19,7 @@ const User = require('./models/user');
 //Mongoose Config
 mongoose.set('useCreateIndex', true);
 mongoose.connect('mongodb://localhost:27017/todoApp', { useNewUrlParser: true });
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 	console.log("we're connected to the DB!");

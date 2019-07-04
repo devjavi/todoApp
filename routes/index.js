@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const passport = require('passport');
-const { asyncErrorHandler } = require('../middleware/index');
+const { asyncErrorHandler, isLoggedIn, isAdmin } = require('../middleware/index');
 const { uRegister, uLogin, uLogout } = require('../controllers/index');
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -16,6 +16,11 @@ router.post('/register', asyncErrorHandler(uRegister));
 router.post('/login', uLogin);
 
 /* GET /logout */
-router.get('/logout', uLogout);
+router.get('/logout', isLoggedIn, uLogout);
+
+//TEST ROUTE
+router.get('/admin', isAdmin, (req, res, next) => {
+	res.send('You rock! Congratulations on the admin role');
+});
 
 module.exports = router;
