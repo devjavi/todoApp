@@ -6,7 +6,7 @@ const { asyncErrorHandler, isLoggedIn, isAdmin } = require('../middleware/index'
 const { uRegister, uLogin, uLogout } = require('../controllers/index');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render('index', { currentUser: req.isAuthenticated() });
+	res.render('index', { currentUser: req.user });
 });
 
 /* POST register. */
