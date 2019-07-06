@@ -1,9 +1,4 @@
 <% include ./layouts/header%>
-
-<% if(!currentUser) { %>
-    <% include ./components/authForms%>
-    
-<% } else if(!currentUser.isAdmin){%>
     <h1>Welcome <%=currentUser.fName%></h1>
     <p>
         <%if(currentUser.todos.length > 0){%>
@@ -13,8 +8,4 @@
         <%};%>
         </p>
     <div><% include ./components/todos%></div>
-<% }; %>
-
-
-</body>
-</html>
+<% include ./layouts/footer%>

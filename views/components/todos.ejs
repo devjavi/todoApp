@@ -1,17 +1,15 @@
-<div>    
-    <div>
-        <ul>
-            <%currentUser.todos.forEach(todo => {%>
-                <li><%=todo.text%> 
+<div>
+    <ul>
+        <%currentUser.todos.forEach(todo => {%>
+            <li><%=todo.text%> 
                     <form action="/<%=currentUser._id%>/<%=todo._id%>?_method=DELETE" method="POST">
-                        <button>X</button>
-                    </form>
-                </li>                
-            <%});%>                
-        </ul>
-        <form action="/newtodo" method="post">
-            <input type="text" name="text" id="">
-            <button type="submit">Add</button>
-        </form>
-    </div>
+                    <button>X</button>
+                </form>
+            </li>                
+        <%});%>                
+    </ul>
+    <form class="form-inline" action="/newtodo" method="post">
+        <input pattern=".{4,}"   required oninvalid="this.setCustomValidity('Sorry that\'s too short')" class="form-control mr-sm-2" type="text" name="text" id="">
+        <button class="btn btn-primary my-2 my-sm-0"type="submit">Add</button>
+    </form>
 </div>

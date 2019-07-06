@@ -14,18 +14,22 @@ module.exports = {
 		}
 	},
 	async isAdmin(req, res, next) {
-		let user = await User.findById(req.user.id, function(err, user) {
-			if (err) {
-				console.log(err);
+		if (req.isAuthenticated()) {
+			let user = await User.findById(req.user.id, function(err, user) {
+				if (err) {
+					console.log(err);
+				} else {
+					return user.isAdmin;
+				}
+			});
+			if (user.isAdmin) {
+				next();
 			} else {
-				return user.isAdmin;
+				res.redirect('back');
 			}
-		});
-		if (user.isAdmin) {
-			next();
+			req, res, next;
 		} else {
-			res.send('nope');
+			res.redirect('back');
 		}
-		req, res, next;
 	}
 };
