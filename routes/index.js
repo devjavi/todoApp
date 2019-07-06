@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 const { asyncErrorHandler, isLoggedIn, isAdmin } = require('../middleware/index');
 const { uRegister, uLogin, uLogout } = require('../controllers/index');
-const { todoNew } = require('../controllers/todo');
+const { todoNew, todoKill } = require('../controllers/todo');
 
 /* GET home/show page. */
 router.get('/', (req, res, next) => {
@@ -34,5 +34,8 @@ router.get('/logout', isLoggedIn, uLogout);
 
 /* POST /user.todos */
 router.post('/newtodo', isLoggedIn, asyncErrorHandler(todoNew));
+
+/* DELETE /user.todo */
+router.delete('/:user_id/:todo_id', isLoggedIn, todoKill);
 
 module.exports = router;

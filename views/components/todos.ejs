@@ -2,7 +2,11 @@
     <div>
         <ul>
             <%currentUser.todos.forEach(todo => {%>
-                <li><%=todo.text%> <span><a href="/deletetodo">X</a></span></li>                
+                <li><%=todo.text%> 
+                    <form action="/<%=currentUser._id%>/<%=todo._id%>?_method=DELETE" method="POST">
+                        <button>X</button>
+                    </form>
+                </li>                
             <%});%>                
         </ul>
         <form action="/newtodo" method="post">

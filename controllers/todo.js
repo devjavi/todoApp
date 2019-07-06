@@ -18,7 +18,6 @@ module.exports = {
 						todo.target.username = req.user.username;
 						todo.text = req.body.text;
 						todo.save();
-						console.log(todo);
 						user.todos.push(todo);
 						user.save();
 					}
@@ -26,5 +25,25 @@ module.exports = {
 			}
 		});
 		res.redirect('/');
+	},
+	todoKill(req, res) {
+		Todo.findByIdAndDelete(req.params.todo_id, (err) => {
+			if (err) {
+				console.log(err);
+				res.render('error', { error: err });
+			} else {
+				User.findById(req.params.user_id, (err, user) => {
+					if (err) {
+						console.log(err);
+						res.render('error', { error: err });
+					} else {
+						console.log(req.params.todo_id);
+						user.todos.remove(req.params.todo_id);
+						user.save();
+					}
+				});
+				res.redirect('/');
+			}
+		});
 	}
 };

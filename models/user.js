@@ -15,6 +15,14 @@ const userSchema = new Schema({
 	]
 });
 
+userSchema.pre('remove', async function() {
+	await Todo.findByIdAndDelete({
+		_id: {
+			$in: this.todos
+		}
+	});
+});
+
 userSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', userSchema);

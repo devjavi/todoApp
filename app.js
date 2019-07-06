@@ -11,6 +11,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 //Variables
 const app = express();
@@ -33,6 +34,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 //EXPRESS SESSION CONFIG + BP
 app.use(express.static('public'));
@@ -45,6 +47,8 @@ app.use(
 );
 //PASSPORT CONFIG
 passport.use(new LocalStrategy(User.authenticate()));
+//Using Method-override
+
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 

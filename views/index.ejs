@@ -6,12 +6,12 @@
 <%} else if(currentUser.isAdmin){%>
     <p>This is what you see if you are an admin</p>
 
+    <div><% include ./components/todos%></div>
+
 <% } else if(!currentUser.isAdmin){%>
     <p>This is what you see if you are not an admin</p>
     
-    <% include ./components/todos%>
-
-
+    <div><% include ./components/todos%></div>
 <% }; %>
 
 

@@ -10,7 +10,8 @@ module.exports = {
 		if (req.isAuthenticated()) {
 			next();
 		} else {
-			res.send('You need to Log in');
+			res.redirect('/');
+			alert('not logged in');
 		}
 	},
 	async isAdmin(req, res, next) {
