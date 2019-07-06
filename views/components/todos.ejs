@@ -1,0 +1,13 @@
+<div>    
+    <div>
+        <ul>
+            <%currentUser.todos.forEach(todo => {%>
+                <li><%=todo.text%> <span><a href="/deletetodo">X</a></span></li>                
+            <%});%>                
+        </ul>
+        <form action="/newtodo" method="post">
+            <input type="text" name="text" id="">
+            <button type="submit">Add</button>
+        </form>
+    </div>
+</div>

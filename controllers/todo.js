@@ -1,5 +1,3 @@
-const mongoose = require('mongoose');
-const passport = require('passport');
 const User = require('../models/user');
 const Todo = require('../models/todo');
 

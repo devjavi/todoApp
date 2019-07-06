@@ -8,20 +8,9 @@
 
 <% } else if(!currentUser.isAdmin){%>
     <p>This is what you see if you are not an admin</p>
-        <div>
-    <div>
-        <ul>
-        <%=currentUser.todos[1]%>
-            <%currentUser.todos.forEach(todo => {%>
-                <li><%=todo.text%></li>                
-            <%});%>                
-        </ul>
-        <form action="/newtodo" method="post">
-            <input type="text" name="text" id="">
-            <button type="submit">Add</button>
-        </form>
-    </div>
-</div>
+    
+    <% include ./components/todos%>
+
 
 <% }; %>
 
