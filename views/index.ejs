@@ -1,34 +1,29 @@
-
 <% include ./layouts/header%>
-    <div class="container">
 
-  <h1>myTodo App</h1>
-  <p>Welcome to myTodo App </p>
-</div>
 <% if(!currentUser) { %>
-
-<!-- This is what you get if you're not logged-->
     <% include ./components/authForms%>
     
-<!–– ––>
-<%} else if(currentUser.isAdmin){;%>
+<%} else if(currentUser.isAdmin){%>
+    <p>This is what you see if you are an admin</p>
 
-<!-- This is what you get if you log in and you're an admin-->
-
-    <div id="">
-        <p>This is what you get when logged in and you're and admin</p>
+<% } else if(!currentUser.isAdmin){%>
+    <p>This is what you see if you are not an admin</p>
+        <div>
+    <div>
+        <ul>
+        <%=currentUser.todos[1]%>
+            <%currentUser.todos.forEach(todo => {%>
+                <li><%=todo.text%></li>                
+            <%});%>                
+        </ul>
+        <form action="/newtodo" method="post">
+            <input type="text" name="text" id="">
+            <button type="submit">Add</button>
+        </form>
     </div>
-<% } else{%>
+</div>
 
-
-
-<!-- This is what you get if you're logged in and are not an admin-->
-    <div id="">
-        <p>This is what you get when logged in and you're a gato</p>        
-    </div>
-    <% include ./components/todos%>
-
-<% } %>
+<% }; %>
 
 
 </body>

@@ -7,10 +7,12 @@ const userSchema = new Schema({
 	lName: String,
 	email: String,
 	isAdmin: { type: Boolean, default: false },
-	todos: {
-		type: Schema.Types.ObjectId,
-		ref: 'Todo'
-	}
+	todos: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'Todo'
+		}
+	]
 });
 
 userSchema.plugin(passportLocalMongoose);

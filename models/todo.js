@@ -2,15 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const todoSchema = new Schema({
-	author: {
-		type: Schema.Types.ObjectId,
-		ref: 'User'
-	},
+	text: String,
 	target: {
-		type: Schema.Types.ObjectId,
-		ref: 'User'
-	},
-	text: String
+		id: {
+			type: Schema.Types.ObjectId,
+			ref: 'User'
+		},
+		username: String
+	}
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Todo', todoSchema);
