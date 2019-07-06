@@ -11,7 +11,6 @@ module.exports = {
 			next();
 		} else {
 			res.redirect('/');
-			alert('not logged in');
 		}
 	},
 	async isAdmin(req, res, next) {
