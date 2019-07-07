@@ -1,0 +1,25 @@
+<div class="container">
+
+    <div>
+        <h3>Profile</h3>
+    </div>
+    <div>
+        <div>
+            <label for="pun">Username</label>
+            <p id="pun"><%=currentUser.username%></p>
+        </div>
+        <div>
+            <label for="pfn">First Name</label>
+            <p id="pfn"><%=currentUser.fName%></p>
+        </div>
+        <div>
+            <label for="pln">Last Name</label>
+            <p id="pln"><%=currentUser.lName%></p>
+        </div>
+        <div>
+            <label for="pem">Email Address</label>
+            <p id="pem"><%=currentUser.email%></p>
+        </div>
+    </div>
+    <a class="btn btn-warning"href="/profile">Edit Profile</a>
+</div>
