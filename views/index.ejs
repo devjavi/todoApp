@@ -1,20 +1,20 @@
 <% include ./layouts/header%>
 
-<% if(!currentUser) { %>
-    <% include ./components/authForms%>
-    
-<% } else if(!currentUser.isAdmin){%>
-    <h1>Welcome <%=currentUser.fName%></h1>
-    <div><%include ./components/profile%></div>
-    <p>
-        <%if(currentUser.todos.length > 0){%>
-            Here you have your pending items:
-        <%} else{%>
-            You don't have pending items, you are awesome!
-        <%};%>
-    </p>
-    <div><% include ./components/todos%></div>
-<% }; %>
+    <% if(!currentUser) { %>
+        <% include ./components/authForms%>
+        
+    <% } else if(!currentUser.isAdmin){%>
+        <h1>Welcome <%=currentUser.fName%></h1>
+        <div><%include ./components/profile%></div>
+        <p>
+            <%if(currentUser.todos.length > 0){%>
+                Here you have your pending items:
+            <%} else{%>
+                You don't have pending items, you are awesome!
+            <%};%>
+        </p>
+        <div><% include ./components/todos%></div>
+    <% }; %>
 
 
 </body>

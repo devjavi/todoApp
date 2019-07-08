@@ -19,10 +19,10 @@ module.exports = {
 				if (err) {
 					console.log(err);
 				} else {
-					return user.isAdmin;
+					return user.roles.admin;
 				}
 			});
-			if (user.isAdmin) {
+			if (user.roles.admin) {
 				next();
 			} else {
 				res.redirect('back');

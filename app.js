@@ -47,7 +47,7 @@ app.use(
 );
 //PASSPORT CONFIG
 passport.use(new LocalStrategy(User.authenticate()));
-//Using Method-override
+//Using Method-ove	rride
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

@@ -6,18 +6,20 @@ module.exports = {
 		let newUser = {
 			username: req.body.username,
 			fName: req.body.fName,
-			lName: req.body.lName,
-			email: req.body.email
+			lName: req.body.lName
+			//lead: req.body.lead
 		};
 
-		if (req.body.isAdmin == 'on') {
-			newUser.isAdmin = true;
-		}
 		await User.register(newUser, req.body.password, (err, user) => {
 			if (err) {
 				console.log(err.message);
-
 				res.render('error', { error: err, message: err.message });
+			} else if (req.body.isAdmin == 'on') {
+				user.roles.admin = true;
+				user.save();
+				passport.authenticate('local')(req, res, () => {
+					res.redirect('/');
+				});
 			} else {
 				passport.authenticate('local')(req, res, () => {
 					res.redirect('/');
