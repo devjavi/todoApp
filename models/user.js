@@ -6,14 +6,6 @@ const userSchema = new Schema({
 	username: String,
 	fName: String,
 	lName: String,
-	roles: {
-		admin: { type: Boolean, default: false },
-		lead: { type: Boolean, default: false }
-	},
-	/*	lead: {
-		type: Schema.Types.ObjectId,
-		ref: 'User'
-	},*/
 	todos: [
 		{
 			type: Schema.Types.ObjectId,

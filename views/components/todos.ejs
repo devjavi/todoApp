@@ -1,15 +1,18 @@
-<div class="container">
-    <ul>
-        <%currentUser.todos.forEach(todo => {%>
-            <li><%=todo.text%> 
-                    <form action="/<%=currentUser._id%>/<%=todo._id%>?_method=DELETE" method="POST">
-                    <button>X</button>
-                </form>
-            </li>                
-        <%});%>                
-    </ul>
-    <form class="form-inline" action="/newtodo" method="post">
-        <input pattern=".{4,}"   required oninvalid="this.setCustomValidity('Sorry that\'s too short')" class="form-control mr-sm-2" type="text" name="text" id="">
-        <button class="btn btn-primary my-2 my-sm-0"type="submit">Add</button>
-    </form>
-</div>
+
+<form class="form-inline" action="/newtodo" method="post">
+    <input pattern=".{4,}"   required oninvalid="this.setCustomValidity('Sorry that\'s too short')" placeholder="ToDo Title" class="form-control mr-sm-2" type="text" name="title" id="">
+    <input pattern=".{12,100}"   required oninvalid="this.setCustomValidity('Sorry that\'s too short')" placeholder="ToDo Description" class="form-control mr-sm-2" type="text" name="text" id="">
+    <button class="btn btn-primary my-2 my-sm-0"type="submit">Add</button>
+</form>
+<%currentUser.todos.forEach(todo => {%>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title"><%=todo.title%></h5>
+            <p class="card-text"><%=todo.text%></p>
+            <form class="form-inline" action="/<%=currentUser._id%>/<%=todo._id%>?_method=DELETE" method="POST">
+                <button class="btn btn-danger mb-2">X</button>
+            </form>
+        </div>
+    </div>                
+<%});%>  
+

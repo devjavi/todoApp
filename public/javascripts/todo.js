@@ -2,9 +2,3 @@
 $('ul').on('click', 'li', function() {
 	$(this).toggleClass('completed');
 });
-
-// + sign functionality
-
-$('#plusSign').click(() => {
-	$('#newTodo').fadeToggle(200);
-});

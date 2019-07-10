@@ -4,8 +4,8 @@
         <% include ./components/authForms%>
         
     <% } else if(!currentUser.isAdmin){%>
-        <h1>Welcome <%=currentUser.fName%></h1>
-        <div><%include ./components/profile%></div>
+        <div><h1>Welcome <%=currentUser.fName%></h1>
+        <div class="container-fluid"><%include ./components/profile%></div>
         <p>
             <%if(currentUser.todos.length > 0){%>
                 Here you have your pending items:
@@ -13,7 +13,8 @@
                 You don't have pending items, you are awesome!
             <%};%>
         </p>
-        <div><% include ./components/todos%></div>
+        </div>
+        <div class="container"><% include ./components/todos%></div>
     <% }; %>
 
 

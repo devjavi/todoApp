@@ -14,8 +14,7 @@ module.exports = {
 						res.send('User not found');
 					}
 					{
-						todo.target.id = req.user._id;
-						todo.target.username = req.user.username;
+						todo.title = req.body.title;
 						todo.text = req.body.text;
 						todo.save();
 						user.todos.push(todo);

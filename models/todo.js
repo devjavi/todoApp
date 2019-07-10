@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const todoSchema = new Schema({
 	text: String,
+	title: String,
 	target: {
 		id: {
 			type: Schema.Types.ObjectId,
