@@ -20,7 +20,6 @@ const User = require('./models/user');
 
 const dburl = process.env.DBURL || 'mongodb://localhost:27017/todoApp';
 
-console.log(dburl);
 //Mongoose Config
 mongoose.set('useCreateIndex', true);
 mongoose.connect(dburl, { useNewUrlParser: true });
