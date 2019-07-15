@@ -20,6 +20,7 @@ const User = require('./models/user');
 
 const dburl = process.env.DBURL || 'mongodb://localhost:27017/todoApp';
 
+console.log(dburl);
 //Mongoose Config
 mongoose.set('useCreateIndex', true);
 mongoose.connect(dburl, { useNewUrlParser: true });
@@ -60,8 +61,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/todoapp', indexRouter);
-app.use('todoapp/users', usersRouter);
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
