@@ -12,14 +12,17 @@ const LocalStrategy = require('passport-local');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+require('dotenv').config();
 
 //Variables
 const app = express();
 const User = require('./models/user');
 
+const dburl = process.env.DBURL || 'mongodb://localhost:27017/todoApp';
+
 //Mongoose Config
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb://localhost:27017/todoApp', { useNewUrlParser: true });
+mongoose.connect(dburl, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -57,8 +60,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/todoapp', indexRouter);
+app.use('todoapp/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
